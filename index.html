@@ -3,208 +3,235 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Office Hero – Smarter Facilities Management</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Office Hero – AI That Fixes Offices</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #4f46e5;
-      --secondary: #6366f1;
-      --dark: #0f172a;
-      --muted: #64748b;
+      --primary: #6366f1;
+      --secondary: #22d3ee;
+      --accent: #a78bfa;
+      --dark: #020617;
+      --muted: #94a3b8;
       --light: #f8fafc;
-      --card: #ffffff;
-      --gradient: linear-gradient(135deg, #4f46e5, #6366f1);
+      --card: rgba(255,255,255,0.85);
+      --glass: rgba(255,255,255,0.15);
+      --gradient: linear-gradient(135deg, #6366f1, #22d3ee);
+      --gradient-soft: linear-gradient(135deg, #a78bfa, #22d3ee);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
     body {
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    header {
-      background: var(--gradient);
+      background: radial-gradient(circle at top, #0f172a, #020617);
       color: white;
-      padding: 5rem 2rem 6rem;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ================= HERO ================= */
+    header {
+      padding: 6rem 0 8rem;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(99,102,241,0.35), transparent 50%),
+                  radial-gradient(circle at 70% 60%, rgba(34,211,238,0.35), transparent 55%);
+      z-index: 0;
     }
 
     .hero {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 1.2fr 1fr;
-      gap: 3rem;
+      gap: 4rem;
       align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      color: #c7d2fe;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
     }
 
     .hero h1 {
-      font-size: 3.2rem;
-      font-weight: 800;
-      line-height: 1.1;
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.05;
       margin-bottom: 1.5rem;
     }
 
-    .hero p {
-      font-size: 1.1rem;
-      color: #e0e7ff;
-      margin-bottom: 2rem;
+    .hero h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .cta {
-      display: inline-block;
-      background: white;
-      color: var(--primary);
-      padding: 0.9rem 1.6rem;
-      border-radius: 10px;
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 2.2rem;
+      max-width: 520px;
+    }
+
+    .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      padding: 0.95rem 1.6rem;
+      border-radius: 12px;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.25s ease;
     }
 
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    .btn-primary {
+      background: var(--gradient);
+      color: #020617;
+      box-shadow: 0 20px 40px rgba(99,102,241,0.35);
     }
 
-    .hero-card {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+
+    .hero-visual {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    }
+
+    .scan {
+      border: 2px dashed rgba(255,255,255,0.25);
       border-radius: 18px;
       padding: 2rem;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-
-    .hero-card ul {
-      list-style: none;
-    }
-
-    .hero-card li {
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .hero-card li::before {
-      content: '✓';
-      color: #a5b4fc;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 5rem 2rem;
-    }
-
-    .section-title {
       text-align: center;
-      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    .scan::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: linear-gradient(120deg, transparent, rgba(34,211,238,0.25), transparent);
+      animation: scan 3s infinite linear;
+    }
+
+    @keyframes scan {
+      from { transform: translateX(-60%); }
+      to { transform: translateX(60%); }
+    }
+
+    .scan h4 { margin-bottom: 0.6rem; }
+    .scan p { color: var(--muted); font-size: 0.9rem; }
+
+    /* ================= SECTIONS ================= */
+    section { padding: 6rem 0; background: #020617; }
+
+    .section-title { text-align: center; margin-bottom: 4rem; }
 
     .section-title h2 {
-      font-size: 2.4rem;
-      font-weight: 700;
+      font-size: 2.6rem;
+      font-weight: 800;
       margin-bottom: 0.8rem;
     }
 
-    .section-title p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
+    .section-title span {
+      background: var(--gradient-soft);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .features {
+    .section-title p { color: var(--muted); max-width: 640px; margin: 0 auto; }
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
     }
 
-    .feature-card {
+    .card {
       background: var(--card);
-      padding: 2.2rem;
-      border-radius: 18px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      color: #020617;
+      border-radius: 22px;
+      padding: 2.4rem;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
       transition: transform 0.25s ease;
     }
 
-    .feature-card:hover {
-      transform: translateY(-6px);
-    }
+    .card:hover { transform: translateY(-8px); }
 
-    .feature-card h3 {
-      margin-bottom: 0.6rem;
-      font-size: 1.3rem;
-    }
+    .card h3 { margin-bottom: 0.6rem; }
+    .card p { color: #475569; font-size: 0.95rem; }
 
-    .feature-card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .workflow {
+    /* ================= WORKFLOW ================= */
+    .timeline {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
     }
 
     .step {
-      text-align: center;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
       padding: 2rem;
+      text-align: center;
     }
 
-    .step-number {
-      width: 48px;
-      height: 48px;
+    .step span {
+      display: inline-block;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       background: var(--gradient);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-weight: 700;
-    }
-
-    .cta-section {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      border-radius: 28px;
-      margin: 0 2rem 4rem;
-      padding: 4rem 2rem;
-    }
-
-    .cta-section h2 {
-      font-size: 2.2rem;
+      color: #020617;
+      font-weight: 800;
+      line-height: 46px;
       margin-bottom: 1rem;
     }
 
-    .cta-section p {
-      color: #c7d2fe;
-      margin-bottom: 2rem;
+    /* ================= CTA ================= */
+    .final-cta {
+      background: radial-gradient(circle at top, #1e293b, #020617);
+      border-radius: 32px;
+      padding: 5rem 2rem;
+      text-align: center;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
     }
+
+    .final-cta h2 { font-size: 2.4rem; margin-bottom: 1rem; }
+    .final-cta p { color: var(--muted); margin-bottom: 2.5rem; }
 
     footer {
       text-align: center;
       padding: 2rem;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+      .hero { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3rem; }
     }
   </style>
 </head>
@@ -213,20 +240,23 @@
 <header>
   <div class="container hero">
     <div>
-      <h1>Office Hero<br>AI‑Powered Facilities Management</h1>
+      <span class="badge">🚀 Computer Vision for Offices</span>
+      <h1>Your Office,<br><span>Fixed by AI</span></h1>
       <p>
-        Eliminate everyday office friction. Let computer vision detect broken machines,
-        empty supplies, and unused meeting rooms — automatically.
+        Office Hero turns photos into action. Snap a messy kitchen, empty coffee pot,
+        or broken printer — and let AI auto-create the right facilities ticket.
       </p>
-      <a href="#" class="cta">Request a Demo</a>
+      <div class="cta-group">
+        <a href="#" class="btn btn-primary">See It In Action</a>
+        <a href="#" class="btn btn-secondary">View Concept</a>
+      </div>
     </div>
-    <div class="hero-card">
-      <ul>
-        <li>Snap a photo of an issue</li>
-        <li>AI identifies the problem</li>
-        <li>Ticket auto‑created with urgency</li>
-        <li>Facilities team acts faster</li>
-      </ul>
+
+    <div class="hero-visual">
+      <div class="scan">
+        <h4>📸 Photo Uploaded</h4>
+        <p>AI detected: Empty coffee machine<br>Urgency: High</p>
+      </div>
     </div>
   </div>
 </header>
@@ -234,70 +264,55 @@
 <section>
   <div class="container">
     <div class="section-title">
-      <h2>The Problem</h2>
-      <p>
-        Office productivity drops due to small but constant issues — broken coffee machines,
-        ghosted meeting rooms, and empty snack bars.
-      </p>
+      <h2>Why Offices <span>Break Productivity</span></h2>
+      <p>Small issues compound into daily frustration and lost focus.</p>
     </div>
 
-    <div class="features">
-      <div class="feature-card">
-        <h3>Unreported Issues</h3>
-        <p>Employees notice problems but don’t log tickets due to friction.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>☕ Broken Essentials</h3>
+        <p>Coffee machines, printers, and shared tools fail — and stay unfixed.</p>
       </div>
-      <div class="feature-card">
-        <h3>Poor Prioritization</h3>
-        <p>Facilities teams struggle to know what’s urgent and what’s not.</p>
+      <div class="card">
+        <h3>👻 Ghosted Rooms</h3>
+        <p>Meeting rooms booked but empty waste space and time.</p>
       </div>
-      <div class="feature-card">
-        <h3>Wasted Resources</h3>
-        <p>Meeting rooms booked but empty, equipment idle or unavailable.</p>
+      <div class="card">
+        <h3>📋 Manual Tickets</h3>
+        <p>Reporting issues feels like work — so people stop doing it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section style="background:#f1f5f9;">
+<section>
   <div class="container">
     <div class="section-title">
-      <h2>How Office Hero Works</h2>
-      <p>A simple, intelligent workflow powered by computer vision.</p>
+      <h2>How <span>Office Hero</span> Works</h2>
+      <p>Zero friction. Maximum clarity.</p>
     </div>
 
-    <div class="workflow">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h4>Capture</h4>
-        <p>Employee uploads a photo or camera feed detects an issue.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h4>Analyze</h4>
-        <p>AI identifies the problem — empty coffee pot, broken device, no supplies.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h4>Auto‑Ticket</h4>
-        <p>System creates a categorized maintenance ticket with urgency.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h4>Resolve</h4>
-        <p>Facilities team fixes the issue faster with clear priorities.</p>
-      </div>
+    <div class="timeline">
+      <div class="step"><span>1</span><h4>Capture</h4><p>Photo or camera feed spots an issue.</p></div>
+      <div class="step"><span>2</span><h4>Understand</h4><p>AI classifies problem & urgency.</p></div>
+      <div class="step"><span>3</span><h4>Create</h4><p>Ticket auto-logged for facilities.</p></div>
+      <div class="step"><span>4</span><h4>Resolve</h4><p>Teams fix what matters most.</p></div>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
-  <h2>Turn Office Problems into One‑Click Fixes</h2>
-  <p>Upload a photo of an empty coffee pot and watch Office Hero take care of the rest.</p>
-  <a href="#" class="cta">Get Early Access</a>
+<section>
+  <div class="container">
+    <div class="final-cta">
+      <h2>Make Your Office Self-Aware</h2>
+      <p>Upload one photo. Let Office Hero do the rest.</p>
+      <a href="#" class="btn btn-primary">Get Early Access</a>
+    </div>
+  </div>
 </section>
 
 <footer>
-  © 2026 Office Hero. All rights reserved.
+  © 2026 Office Hero · Built for smarter workplaces
 </footer>
 
 </body>
