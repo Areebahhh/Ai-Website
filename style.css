@@ -1,0 +1,41 @@
+body {
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+background-color: #f4f6f8;
+color: #333;
+}
+
+
+.header {
+background-color: #0a2540;
+color: white;
+text-align: center;
+padding: 40px 20px;
+}
+
+
+.about, .features {
+background-color: white;
+margin: 20px;
+padding: 20px;
+border-radius: 8px;
+}
+
+
+h2 {
+color: #0a2540;
+}
+
+
+.features ul {
+list-style-type: square;
+padding-left: 20px;
+}
+
+
+.footer {
+text-align: center;
+padding: 15px;
+background-color: #e0e0e0;
+font-size: 14px;
+}
